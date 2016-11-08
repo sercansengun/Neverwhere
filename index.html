@@ -1,0 +1,142 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta property="og:url" content="http://sercansengun.com/neverwhere/"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Neverwhere"/>
+<meta property="og:title" content="Neverwhere"/>
+<meta property="og:description" content="Random location name generator for authors, game designers, and role players"/>
+<meta property="og:image" content="http://sercansengun.com/neverwhere/preview.png">
+
+<!--
+Neverwhere. Copyright (c) 2016 Sercan Şengün <sercansengun@gmail.com>
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
+SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
+IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+-->
+<meta name="description" content="Neverwhere - Random location name generator for authors, game designers, and role players">
+<meta name="author" content="Sercan Şengün">
+
+<title>Neverwhere - Random location name generator for authors, game designers, and role players</title>
+
+<link rel="icon" type="image/png" href="favicon.png" />
+
+<script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="neverwhere.js"></script>
+
+<script type="text/javascript">
+var imgArray = [
+ "url('background1.png')",
+ "url('background3.png')",
+ "url('background4.png')",
+ "url('background6.png')",
+ "url('background7.png')",
+ "url('background8.png')",
+ "url('background9.png')"
+            ];
+
+var numOfImg = imgArray.length;
+function randomImg(){
+  var randomNum = Math.floor(Math.random()*numOfImg);
+  document.body.style.backgroundImage = imgArray[randomNum];
+}
+setInterval(randomImg,10000);
+</script>
+
+</head>
+<body onload="randomImg()" style="margin-top:30px; font-family:'Noto Serif',serif; background: no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+<div class="container">
+  <div class="row">
+      <div class="col-xs-12 text-center">
+        <h1 style="font-size:7em; font-family: 'Lobster Two', cursive;">Neverwhere</h1><br/>
+        <p>Click the button below to create a place that will <a href="#" onClick="statistics();">never exist</a> for anyone else!</p>
+        <p id="stats" style="margin-bottom:20px;">&nbsp;</p>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <input type="button" onclick="doneverwhere()" class="btn-lg btn-success" style="text-align:center;margin-bottom:20px;" value="Neverwhere!">
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-xs-12 text-center">
+        <input type="text" class="form-control input-lg" id="main" onClick="this.select();" style="font-size:3em;height:auto;text-align:center;">
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <textarea class="form-control output" rows="5" onClick="this.select();" style="text-align:center;margin-top:20px;">
+      </textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <p style="font-size:10px;margin-top:50px;"><strong>Neverwhere</strong>. Copyright (c) 2016 Sercan Şengün <a href="http://sercansengun.com" target="_blank">sercansengun.com</a><br/>
+      Permission to use, copy, modify, and/or distribute this software for any purpose without fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.<br/>
+      Background Images: <a href="http://flickr.com/photos/britishlibrary/" target="_blank">British Library Flickr Account</a></p>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  function doneverwhere () {
+    var neverwhere; //Final location name
+    var basename; //Base location name
+    var rand;
+
+    //Decide if base location name is 2 or 3 syllables and randomly produce it
+    rand = Math.random();
+    if (rand<=twosyllables) {
+      basename = three[Math.random() * three.length>>0] + four[Math.random() * four.length>>0];
+    } else {
+      basename = three[Math.random() * three.length>>0] + four[Math.random() * four.length>>0] + five[Math.random() * five.length>>0] ;
+    }
+
+    //Decide if there is an article/adjective in the beginning and randomly select it
+    rand = Math.random();
+    if (rand<=adjectives) {
+      neverwhere = one[Math.random() * one.length>>0] + " ";
+    } else {
+      neverwhere = "";
+    }
+
+    //Decide if there is location identifier, whether it is at the beginning or at the end, and randomly select it
+    rand = Math.random();
+    if (rand<=beginningid) {
+      neverwhere = neverwhere + two[Math.random() * two.length>>0] + " " + basename;
+    } else if (rand>beginningid && rand<=endingid) {
+      neverwhere = neverwhere + basename + " " + six[Math.random() * six.length>>0];
+    } else {
+      neverwhere = neverwhere + basename;
+    }
+
+    //Write the final location name on screen
+    document.getElementById("main").value = neverwhere;
+    $(".output").append(neverwhere+", ");
+
+  }
+  function statistics() {
+    var total = one.length*2*two.length*2*three.length*four.length*five.length*2*six.length*2;
+    document.getElementById("stats").innerHTML = "Statistically speaking one in " + total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " chance, unless such a place already exists.";
+  }
+</script>
+</body>
+</html>
